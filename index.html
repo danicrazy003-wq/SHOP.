@@ -1,0 +1,3670 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+>
+
+<meta
+name="theme-color"
+content="#050508"
+>
+
+<title>AghaKocholo.VPNS | سرویس پرسرعت</title>
+
+<style>
+
+/* =====================================================
+RESET
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    width:100%;
+    overflow-x:hidden;
+}
+
+body{
+    width:100%;
+    min-width:0;
+    overflow-x:hidden;
+
+    font-family:
+    Tahoma,
+    Arial,
+    sans-serif;
+
+    background:#050508;
+    color:#fff;
+
+    line-height:1.7;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+button,
+input,
+select,
+textarea{
+    font-family:inherit;
+    max-width:100%;
+}
+
+button{
+    -webkit-tap-highlight-color:transparent;
+}
+
+a{
+    -webkit-tap-highlight-color:transparent;
+}
+
+
+/* =====================================================
+BACKGROUND
+===================================================== */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    filter:blur(110px);
+
+    opacity:.08;
+
+    z-index:-1;
+
+    pointer-events:none;
+}
+
+body::before{
+    background:#00eaff;
+    top:-150px;
+    right:-150px;
+}
+
+body::after{
+    background:#9b00ff;
+    bottom:-150px;
+    left:-150px;
+}
+
+
+/* =====================================================
+HEADER
+===================================================== */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:5000;
+
+    width:100%;
+
+    background:
+    rgba(5,5,8,.94);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:
+    1px solid
+    rgba(255,255,255,.08);
+}
+
+.navbar{
+    width:100%;
+    max-width:1200px;
+
+    min-height:65px;
+
+    margin:auto;
+
+    padding:
+    10px 15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+}
+
+.logo{
+    min-width:0;
+
+    font-size:clamp(16px,4vw,22px);
+
+    font-weight:900;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    background:
+    linear-gradient(
+        90deg,
+        #00eaff,
+        #9b00ff,
+        #ff00aa
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+    display:flex;
+
+    align-items:center;
+
+    gap:3px;
+
+    list-style:none;
+}
+
+.nav-links a{
+    display:block;
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    padding:
+    8px 10px;
+
+    border-radius:9px;
+
+    font-size:12px;
+
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:#00eaff;
+
+    background:
+    rgba(0,234,255,.08);
+}
+
+.menu-btn{
+    display:none;
+
+    flex-shrink:0;
+
+    width:43px;
+    height:43px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:
+    rgba(255,255,255,.07);
+
+    color:#fff;
+
+    font-size:21px;
+
+    cursor:pointer;
+}
+
+.mobile-menu{
+    display:none;
+
+    width:100%;
+
+    padding:
+    8px 12px 15px;
+
+    background:#08080d;
+}
+
+.mobile-menu.active{
+    display:block;
+}
+
+.mobile-menu a{
+    display:block;
+
+    width:100%;
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    padding:13px;
+
+    margin-top:5px;
+
+    border-radius:11px;
+
+    background:
+    rgba(255,255,255,.045);
+
+    font-size:14px;
+}
+
+
+/* =====================================================
+NOTICE
+===================================================== */
+
+.welcome-notice{
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:99999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:15px;
+
+    background:
+    rgba(0,0,0,.86);
+
+    backdrop-filter:blur(12px);
+
+    overflow-y:auto;
+}
+
+.notice-box{
+    width:100%;
+
+    max-width:500px;
+
+    max-height:
+    calc(100vh - 30px);
+
+    overflow-y:auto;
+
+    padding:
+    28px 20px;
+
+    text-align:center;
+
+    border-radius:24px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #10131c,
+        #08080d
+    );
+
+    border:
+    1px solid
+    rgba(0,234,255,.25);
+
+    box-shadow:
+    0 20px 70px
+    rgba(0,0,0,.7);
+
+    animation:
+    noticePop .4s ease;
+}
+
+@keyframes noticePop{
+
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+
+.notice-icon{
+    width:62px;
+    height:62px;
+
+    margin:
+    0 auto 15px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:20px;
+
+    font-size:30px;
+
+    background:
+    rgba(0,234,255,.08);
+
+    border:
+    1px solid
+    rgba(0,234,255,.2);
+}
+
+.notice-box h2{
+    font-size:
+    clamp(19px,5vw,25px);
+
+    margin-bottom:12px;
+
+    line-height:1.5;
+
+    background:
+    linear-gradient(
+        90deg,
+        #00eaff,
+        #9b5cff
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.notice-text{
+    color:#bbb;
+
+    font-size:
+    clamp(12px,3.5vw,14px);
+
+    line-height:2.2;
+
+    margin-bottom:20px;
+}
+
+.notice-highlight{
+    display:block;
+
+    margin-top:10px;
+
+    color:#fff;
+
+    font-weight:bold;
+}
+
+.notice-close{
+    width:100%;
+
+    min-height:52px;
+
+    border:0;
+
+    border-radius:14px;
+
+    color:#777;
+
+    background:
+    rgba(255,255,255,.06);
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    cursor:not-allowed;
+}
+
+.notice-close.active{
+    color:#000;
+
+    cursor:pointer;
+
+    background:
+    linear-gradient(
+        135deg,
+        #00eaff,
+        #8b5cff
+    );
+
+    box-shadow:
+    0 10px 30px
+    rgba(0,234,255,.2);
+}
+
+.notice-countdown{
+    display:block;
+
+    margin-top:10px;
+
+    color:#666;
+
+    font-size:10px;
+}
+
+.notice-countdown.ready{
+    color:#00ff88;
+}
+
+
+/* =====================================================
+GENERAL
+===================================================== */
+
+main{
+    width:100%;
+    overflow:hidden;
+}
+
+section{
+    width:100%;
+    max-width:1200px;
+
+    margin:
+    0 auto;
+
+    padding:
+    65px 15px;
+}
+
+.section-title{
+    width:100%;
+
+    text-align:center;
+
+    margin-bottom:35px;
+}
+
+.section-title span{
+    color:#00eaff;
+
+    font-size:11px;
+}
+
+.section-title h2{
+    margin-top:6px;
+
+    font-size:
+    clamp(24px,7vw,43px);
+
+    line-height:1.5;
+}
+
+.section-title p{
+    color:#999;
+
+    font-size:12px;
+
+    margin-top:7px;
+}
+
+
+/* =====================================================
+HERO
+===================================================== */
+
+.hero{
+    min-height:
+    calc(100svh - 65px);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:
+    60px 15px;
+}
+
+.hero-content{
+    width:100%;
+    max-width:850px;
+}
+
+.hero-badge{
+    display:inline-block;
+
+    max-width:100%;
+
+    padding:
+    8px 15px;
+
+    margin-bottom:20px;
+
+    border-radius:50px;
+
+    color:#00eaff;
+
+    background:
+    rgba(0,234,255,.07);
+
+    border:
+    1px solid
+    rgba(0,234,255,.25);
+
+    font-size:12px;
+}
+
+.hero h1{
+    width:100%;
+
+    font-size:
+    clamp(35px,10vw,85px);
+
+    line-height:1.25;
+
+    overflow-wrap:anywhere;
+
+    background:
+    linear-gradient(
+        90deg,
+        #fff,
+        #00eaff,
+        #9b00ff,
+        #ff00aa,
+        #fff
+    );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:
+    gradient 6s linear infinite;
+}
+
+@keyframes gradient{
+
+    from{
+        background-position:0%;
+    }
+
+    to{
+        background-position:300%;
+    }
+
+}
+
+.hero h2{
+    margin-top:15px;
+
+    font-size:
+    clamp(17px,5vw,28px);
+}
+
+.hero p{
+    max-width:650px;
+
+    margin:
+    15px auto;
+
+    color:#aaa;
+
+    font-size:
+    clamp(12px,3.5vw,15px);
+
+    line-height:2;
+}
+
+.hero-buttons{
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-top:25px;
+}
+
+
+/* =====================================================
+BUTTONS
+===================================================== */
+
+.btn{
+    min-height:48px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:
+    12px 20px;
+
+    border-radius:13px;
+
+    border:0;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.btn-primary{
+    color:#000;
+
+    background:
+    linear-gradient(
+        135deg,
+        #00eaff,
+        #8b5cff
+    );
+}
+
+.btn-secondary{
+    color:#fff;
+
+    background:
+    rgba(255,255,255,.05);
+
+    border:
+    1px solid
+    rgba(255,255,255,.12);
+}
+
+.btn:active{
+    transform:scale(.97);
+}
+
+
+/* =====================================================
+LIVE STATUS
+===================================================== */
+
+.live-status{
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:12px;
+}
+
+.status-card{
+    min-width:0;
+
+    padding:
+    20px 10px;
+
+    text-align:center;
+
+    border-radius:18px;
+
+    background:
+    rgba(255,255,255,.035);
+
+    border:
+    1px solid
+    rgba(255,255,255,.08);
+}
+
+.status-icon{
+    font-size:26px;
+}
+
+.status-card h3{
+    color:#aaa;
+
+    font-size:11px;
+
+    margin:
+    5px 0;
+}
+
+.status-value{
+    font-size:
+    clamp(16px,4vw,23px);
+
+    font-weight:900;
+
+    overflow-wrap:anywhere;
+}
+
+.online{
+    color:#00ff88;
+}
+
+.speed{
+    color:#00eaff;
+}
+
+.users{
+    color:#c77dff;
+}
+
+
+/* =====================================================
+QUICK BUY
+===================================================== */
+
+.quick-buy{
+    width:100%;
+
+    padding:
+    clamp(18px,5vw,40px);
+
+    border-radius:24px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(0,234,255,.07),
+        rgba(155,0,255,.07)
+    );
+
+    border:
+    1px solid
+    rgba(255,255,255,.1);
+}
+
+.buy-grid{
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:15px;
+}
+
+.form-group{
+    width:100%;
+    min-width:0;
+}
+
+.form-group label{
+    display:block;
+
+    color:#bbb;
+
+    margin-bottom:8px;
+
+    font-size:12px;
+}
+
+select{
+    width:100%;
+
+    min-height:48px;
+
+    padding:
+    12px;
+
+    border-radius:12px;
+
+    background:#0d0d13;
+
+    color:#fff;
+
+    border:
+    1px solid
+    rgba(255,255,255,.12);
+
+    outline:none;
+
+    font-size:12px;
+}
+
+.location-warning{
+    width:100%;
+
+    margin-top:8px;
+
+    padding:10px;
+
+    border-radius:10px;
+
+    color:#ffc107;
+
+    background:
+    rgba(255,193,7,.06);
+
+    border:
+    1px solid
+    rgba(255,193,7,.18);
+
+    font-size:10px;
+
+    line-height:1.8;
+}
+
+
+/* =====================================================
+VOLUME
+===================================================== */
+
+.volume-box{
+    width:100%;
+
+    padding:18px;
+
+    border-radius:17px;
+
+    background:
+    rgba(0,0,0,.2);
+}
+
+.volume-header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:15px;
+}
+
+.volume-title{
+    color:#bbb;
+
+    font-size:11px;
+}
+
+.volume-number{
+    color:#00eaff;
+
+    font-size:25px;
+
+    font-weight:900;
+}
+
+.volume-unit{
+    color:#aaa;
+
+    font-size:10px;
+}
+
+input[type="range"]{
+    width:100%;
+
+    height:8px;
+
+    appearance:none;
+
+    -webkit-appearance:none;
+
+    border-radius:20px;
+
+    outline:none;
+
+    cursor:pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb{
+    appearance:none;
+
+    -webkit-appearance:none;
+
+    width:25px;
+    height:25px;
+
+    border-radius:50%;
+
+    background:#00eaff;
+
+    border:
+    4px solid
+    #071318;
+
+    box-shadow:
+    0 0 18px
+    rgba(0,234,255,.7);
+}
+
+input[type="range"]::-moz-range-thumb{
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    background:#00eaff;
+
+    border:3px solid #071318;
+}
+
+.range-labels{
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#777;
+
+    font-size:9px;
+
+    margin-top:8px;
+}
+
+
+/* =====================================================
+PRICE RESULT
+===================================================== */
+
+.price-result{
+    width:100%;
+
+    margin-top:20px;
+
+    padding:
+    20px 15px;
+
+    text-align:center;
+
+    border-radius:18px;
+
+    background:
+    rgba(0,0,0,.25);
+}
+
+.order-summary{
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:8px;
+
+    margin-bottom:18px;
+}
+
+.summary-item{
+    min-width:0;
+
+    padding:10px 5px;
+
+    border-radius:10px;
+
+    background:
+    rgba(255,255,255,.04);
+
+    color:#888;
+
+    font-size:9px;
+}
+
+.summary-item strong{
+    display:block;
+
+    color:#fff;
+
+    margin-top:4px;
+
+    font-size:11px;
+
+    overflow-wrap:anywhere;
+}
+
+.final-price{
+    color:#00eaff;
+
+    font-size:
+    clamp(22px,7vw,30px);
+
+    font-weight:900;
+
+    margin:
+    8px 0 18px;
+}
+
+.buy-button{
+    width:100%;
+}
+
+
+/* =====================================================
+PRICING
+===================================================== */
+
+.pricing{
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:15px;
+}
+
+.price-box{
+    min-width:0;
+
+    padding:
+    25px 15px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.035);
+
+    border:
+    1px solid
+    rgba(255,255,255,.1);
+}
+
+.price-title{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:20px;
+}
+
+.price-title-icon{
+    font-size:32px;
+}
+
+.price-title h3{
+    font-size:18px;
+}
+
+.price-title p{
+    color:#999;
+
+    font-size:9px;
+
+    margin-top:2px;
+}
+
+.price-item{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:5px;
+
+    padding:12px 10px;
+
+    margin-bottom:8px;
+
+    border-radius:10px;
+
+    background:
+    rgba(0,0,0,.25);
+
+    font-size:11px;
+}
+
+.diamond .price{
+    color:#00eaff;
+}
+
+.gold .price{
+    color:#ffc107;
+}
+
+
+/* =====================================================
+LOCATIONS
+===================================================== */
+
+.location-grid{
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    gap:10px;
+}
+
+.location-card{
+    min-width:0;
+
+    padding:
+    20px 8px;
+
+    text-align:center;
+
+    border-radius:17px;
+
+    background:
+    rgba(255,255,255,.035);
+
+    border:
+    1px solid
+    rgba(255,255,255,.08);
+}
+
+.flag{
+    font-size:35px;
+
+    margin-bottom:6px;
+}
+
+.location-card h3{
+    font-size:13px;
+
+    margin-bottom:4px;
+}
+
+.location-card p{
+    color:#aaa;
+
+    font-size:9px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+TUTORIAL
+===================================================== */
+
+.tutorial{
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:15px;
+}
+
+.tutorial-card{
+    min-width:0;
+
+    padding:
+    25px 18px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.035);
+
+    border:
+    1px solid
+    rgba(255,255,255,.08);
+}
+
+.tutorial-card h3{
+    font-size:17px;
+
+    margin-bottom:18px;
+}
+
+.step{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+    margin-bottom:15px;
+}
+
+.step-number{
+    flex-shrink:0;
+
+    width:30px;
+    height:30px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        135deg,
+        #00eaff,
+        #8b5cff
+    );
+
+    color:#000;
+
+    font-size:11px;
+
+    font-weight:bold;
+}
+
+.step p{
+    color:#aaa;
+
+    font-size:12px;
+
+    line-height:1.9;
+}
+
+
+/* =====================================================
+FAQ
+===================================================== */
+
+.faq{
+    width:100%;
+
+    max-width:850px;
+
+    margin:auto;
+}
+
+details{
+    width:100%;
+
+    padding:16px;
+
+    margin-bottom:9px;
+
+    border-radius:13px;
+
+    background:
+    rgba(255,255,255,.035);
+
+    border:
+    1px solid
+    rgba(255,255,255,.08);
+}
+
+summary{
+    cursor:pointer;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+details p{
+    color:#999;
+
+    font-size:11px;
+
+    line-height:2;
+
+    margin-top:12px;
+}
+
+
+/* =====================================================
+CONTACT
+===================================================== */
+
+.contact{
+    text-align:center;
+}
+
+.contact-card{
+    width:100%;
+
+    max-width:700px;
+
+    margin:auto;
+
+    padding:
+    35px 18px;
+
+    border-radius:23px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(0,234,255,.07),
+        rgba(155,0,255,.07)
+    );
+
+    border:
+    1px solid
+    rgba(255,255,255,.1);
+}
+
+.contact-card h2{
+    font-size:
+    clamp(22px,6vw,30px);
+}
+
+.contact-card p{
+    color:#aaa;
+
+    margin-top:10px;
+
+    font-size:12px;
+
+    line-height:2;
+}
+
+.rubika{
+    max-width:100%;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin:
+    18px 0;
+
+    padding:10px 12px;
+
+    border-radius:11px;
+
+    background:
+    rgba(0,0,0,.3);
+
+    font-size:12px;
+}
+
+.copy{
+    border:0;
+
+    padding:
+    6px 10px;
+
+    border-radius:7px;
+
+    background:#00eaff;
+
+    color:#000;
+
+    cursor:pointer;
+
+    font-size:10px;
+}
+
+
+/* =====================================================
+FOOTER
+===================================================== */
+
+footer{
+    width:100%;
+
+    padding:
+    30px 15px;
+
+    text-align:center;
+
+    color:#777;
+
+    border-top:
+    1px solid
+    rgba(255,255,255,.08);
+
+    font-size:10px;
+}
+
+footer strong{
+    color:#00eaff;
+}
+
+
+/* =====================================================
+ORDER MODAL
+===================================================== */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:9998;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:15px;
+
+    background:
+    rgba(0,0,0,.85);
+
+    backdrop-filter:blur(10px);
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+
+    max-width:560px;
+
+    max-height:
+    calc(100vh - 30px);
+
+    overflow-y:auto;
+
+    padding:
+    22px 15px;
+
+    border-radius:22px;
+
+    background:#0c0c12;
+
+    border:
+    1px solid
+    rgba(0,234,255,.2);
+}
+
+.modal-header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:15px;
+}
+
+.modal-header h3{
+    color:#00eaff;
+
+    font-size:18px;
+}
+
+.close-modal{
+    flex-shrink:0;
+
+    width:38px;
+    height:38px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:
+    rgba(255,255,255,.06);
+
+    color:#fff;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+.order-alert{
+    padding:14px;
+
+    margin-bottom:12px;
+
+    border-radius:13px;
+
+    background:
+    rgba(0,234,255,.06);
+
+    color:#ddd;
+
+    line-height:2;
+
+    font-size:11px;
+}
+
+.copy-text{
+    width:100%;
+
+    min-height:210px;
+
+    padding:13px;
+
+    resize:none;
+
+    border-radius:13px;
+
+    background:#050508;
+
+    color:#ddd;
+
+    border:
+    1px solid
+    rgba(255,255,255,.1);
+
+    outline:none;
+
+    line-height:2;
+
+    font-size:11px;
+}
+
+.modal-actions{
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:8px;
+
+    margin-top:12px;
+}
+
+.modal-actions .btn{
+    width:100%;
+
+    font-size:11px;
+}
+
+
+/* =====================================================
+TABLET
+===================================================== */
+
+@media(max-width:900px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .buy-grid{
+        grid-template-columns:1fr;
+    }
+
+    .location-grid{
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+}
+
+
+/* =====================================================
+MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    section{
+        padding:
+        50px 12px;
+    }
+
+    .hero{
+        min-height:
+        calc(100svh - 65px);
+
+        padding:
+        50px 12px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+
+        width:100%;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
+    }
+
+    .live-status{
+        grid-template-columns:
+        repeat(3,1fr);
+
+        gap:6px;
+    }
+
+    .status-card{
+        padding:
+        15px 4px;
+    }
+
+    .status-icon{
+        font-size:21px;
+    }
+
+    .status-card h3{
+        font-size:9px;
+    }
+
+    .status-value{
+        font-size:13px;
+    }
+
+    .pricing{
+        grid-template-columns:1fr;
+    }
+
+    .location-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:8px;
+    }
+
+    .tutorial{
+        grid-template-columns:1fr;
+    }
+
+    .order-summary{
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+    .summary-item{
+        padding:
+        9px 3px;
+    }
+
+    .modal{
+        align-items:flex-end;
+
+        padding:0;
+    }
+
+    .modal-box{
+        max-width:none;
+
+        max-height:
+        92svh;
+
+        border-radius:
+        22px 22px 0 0;
+
+        padding:
+        20px 13px;
+    }
+
+    .modal-actions{
+        grid-template-columns:1fr;
+    }
+
+    .modal-actions .btn{
+        min-height:48px;
+    }
+
+}
+
+
+/* =====================================================
+VERY SMALL PHONES
+===================================================== */
+
+@media(max-width:360px){
+
+    .logo{
+        font-size:14px;
+    }
+
+    .navbar{
+        padding:
+        9px 10px;
+    }
+
+    .live-status{
+        grid-template-columns:1fr;
+    }
+
+    .status-card{
+        padding:15px;
+    }
+
+    .order-summary{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+WELCOME NOTICE
+===================================================== -->
+
+<div
+class="welcome-notice"
+id="welcomeNotice"
+>
+
+<div class="notice-box">
+
+<div class="notice-icon">
+💙
+</div>
+
+<h2>
+یک لحظه مهمون ما باش 😊
+</h2>
+
+<div class="notice-text">
+
+دوست عزیز 🌹
+
+<br>
+
+لطفاً قبل از انجام هر خریدی،
+حتماً یه سر به بخش
+<strong>
+❓ سوالات متداول
+</strong>
+بزن.
+
+<span class="notice-highlight">
+
+📚 شاید جواب سوالت همون‌جا باشه
+و خیلی سریع راهنماییت کنه! ⚡️
+
+<br>
+
+❤️ ممنونم که چند لحظه وقت می‌ذاری؛
+واقعاً خیلی ازت وقت نمی‌گیره 😊🙏
+
+</span>
+
+</div>
+
+<button
+class="notice-close"
+id="noticeClose"
+disabled
+>
+⏳ لطفاً ۵ ثانیه صبر کنید...
+</button>
+
+<span
+class="notice-countdown"
+id="noticeCountdown"
+>
+دکمه بستن تا ۵ ثانیه دیگر فعال می‌شود
+</span>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+HEADER
+===================================================== -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+AghaKocholo.VPNS 🚀
+</div>
+
+<ul class="nav-links">
+
+<li>
+<a href="#home">🏠 خانه</a>
+</li>
+
+<li>
+<a href="#quick-buy">🛒 خرید سریع</a>
+</li>
+
+<li>
+<a href="#pricing">💎 قیمت‌ها</a>
+</li>
+
+<li>
+<a href="#tutorial">📱 آموزش</a>
+</li>
+
+<li>
+<a href="#faq">❓ سوالات</a>
+</li>
+
+<li>
+<a href="#contact">💬 پشتیبانی</a>
+</li>
+
+</ul>
+
+<button
+class="menu-btn"
+onclick="toggleMenu()"
+aria-label="منو"
+>
+☰
+</button>
+
+</nav>
+
+
+<div
+class="mobile-menu"
+id="mobileMenu"
+>
+
+<a href="#home" onclick="closeMenu()">
+🏠 خانه
+</a>
+
+<a href="#quick-buy" onclick="closeMenu()">
+🛒 خرید سریع
+</a>
+
+<a href="#pricing" onclick="closeMenu()">
+💎 قیمت‌ها
+</a>
+
+<a href="#tutorial" onclick="closeMenu()">
+📱 آموزش
+</a>
+
+<a href="#faq" onclick="closeMenu()">
+❓ سوالات متداول
+</a>
+
+<a href="#contact" onclick="closeMenu()">
+💬 پشتیبانی
+</a>
+
+</div>
+
+</header>
+
+
+<!-- =====================================================
+HERO
+===================================================== -->
+
+<main id="home">
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-badge">
+🟢 تمامی سرویس‌ها فعال هستند
+</div>
+
+<h1>
+AghaKocholo.VPNS
+</h1>
+
+<h2>
+⚡ سرعت بیشتر، تجربه بهتر 🚀
+</h2>
+
+<p>
+کانفیگ‌های V2RayNG و NapsternetV
+با تمرکز بر سرعت و پایداری.
+<br>
+حجم و لوکیشن موردنظرت را انتخاب کن
+و سفارش خودت را ثبت کن.
+</p>
+
+<div class="hero-buttons">
+
+<a
+href="#quick-buy"
+class="btn btn-primary"
+>
+🛒 خرید سریع
+</a>
+
+<a
+href="#tutorial"
+class="btn btn-secondary"
+>
+📱 آموزش اتصال
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+LIVE STATUS
+===================================================== -->
+
+<section>
+
+<div class="section-title">
+
+<span>
+LIVE STATUS
+</span>
+
+<h2>
+وضعیت لحظه‌ای سرویس
+</h2>
+
+</div>
+
+<div class="live-status">
+
+<div class="status-card">
+
+<div class="status-icon">
+🟢
+</div>
+
+<h3>
+وضعیت سرورها
+</h3>
+
+<div class="status-value online">
+آنلاین
+</div>
+
+</div>
+
+
+<div class="status-card">
+
+<div class="status-icon">
+👥
+</div>
+
+<h3>
+کاربران فعال
+</h3>
+
+<div class="status-value users">
+۱۵ نفر
+</div>
+
+</div>
+
+
+<div class="status-card">
+
+<div class="status-icon">
+⚡
+</div>
+
+<h3>
+میانگین سرعت
+</h3>
+
+<div class="status-value speed">
++۵۰ Mbps
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+QUICK BUY
+===================================================== -->
+
+<section id="quick-buy">
+
+<div class="section-title">
+
+<span>
+QUICK BUY
+</span>
+
+<h2>
+🛒 خرید سریع
+</h2>
+
+<p>
+حجم، سرویس و لوکیشن را انتخاب کن
+</p>
+
+</div>
+
+
+<div class="quick-buy">
+
+
+<div class="buy-grid">
+
+
+<div class="form-group">
+
+<label>
+💎 نوع سرویس
+</label>
+
+<select id="service">
+
+<option value="diamond">
+💎 پلن الماس | اینترنت عادی
+</option>
+
+<option value="gold">
+👑 پلن طلایی | اینترنت ملی
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+🌍 لوکیشن سرور
+</label>
+
+<select id="location">
+</select>
+
+<div
+class="location-warning"
+id="locationWarning"
+>
+⚠️ هزینه لوکیشن: رایگان
+</div>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+📦 حجم سرویس
+</label>
+
+<div class="volume-box">
+
+<div class="volume-header">
+
+<div class="volume-title">
+حجم موردنظر
+</div>
+
+<div>
+
+<span
+class="volume-number"
+id="volumeNumber"
+>
+۵
+</span>
+
+<span class="volume-unit">
+گیگابایت
+</span>
+
+</div>
+
+</div>
+
+<input
+type="range"
+id="volumeSlider"
+min="1"
+max="50"
+value="5"
+step="1"
+>
+
+<div class="range-labels">
+
+<span>
+۱ گیگ
+</span>
+
+<span>
+۵۰ گیگ
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="price-result">
+
+<div class="order-summary">
+
+<div class="summary-item">
+
+نوع سرویس
+
+<strong id="selectedService">
+💎 پلن الماس
+</strong>
+
+</div>
+
+
+<div class="summary-item">
+
+لوکیشن
+
+<strong id="selectedLocation">
+🇹🇷 ترکیه
+</strong>
+
+</div>
+
+
+<div class="summary-item">
+
+حجم
+
+<strong id="selectedVolume">
+۵ گیگابایت
+</strong>
+
+</div>
+
+</div>
+
+<div>
+قیمت نهایی سفارش
+</div>
+
+<div
+class="final-price"
+id="finalPrice"
+>
+۲۰,۰۰۰ تومان
+</div>
+
+<button
+class="btn btn-primary buy-button"
+onclick="openOrderModal()"
+>
+🛒 ثبت سفارش
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+PRICING
+===================================================== -->
+
+<section id="pricing">
+
+<div class="section-title">
+
+<span>
+PRICING
+</span>
+
+<h2>
+💎 لیست قیمت
+</h2>
+
+</div>
+
+
+<div class="pricing">
+
+
+<div class="price-box diamond">
+
+<div class="price-title">
+
+<div class="price-title-icon">
+💎
+</div>
+
+<div>
+
+<h3>
+پلن الماس
+</h3>
+
+<p>
+قیمت پایه: هر گیگ ۴,۰۰۰ تومان
+</p>
+
+</div>
+
+</div>
+
+<div class="price-item">
+<span>۵ گیگ</span>
+<span class="price">۲۰,۰۰۰ تومان</span>
+</div>
+
+<div class="price-item">
+<span>۱۰ گیگ</span>
+<span class="price">۴۰,۰۰۰ تومان</span>
+</div>
+
+<div class="price-item">
+<span>۱۵ گیگ</span>
+<span class="price">۶۰,۰۰۰ تومان</span>
+</div>
+
+<div class="price-item">
+<span>۲۰ گیگ</span>
+<span class="price">۸۰,۰۰۰ تومان</span>
+</div>
+
+</div>
+
+
+<div class="price-box gold">
+
+<div class="price-title">
+
+<div class="price-title-icon">
+👑
+</div>
+
+<div>
+
+<h3>
+پلن طلایی
+</h3>
+
+<p>
+هر گیگ ۱۰۰,۰۰۰ تومان
+</p>
+
+</div>
+
+</div>
+
+<div class="price-item">
+<span>۵ گیگ</span>
+<span class="price">۵۰۰,۰۰۰ تومان</span>
+</div>
+
+<div class="price-item">
+<span>۱۰ گیگ</span>
+<span class="price">۱,۰۰۰,۰۰۰ تومان</span>
+</div>
+
+<div class="price-item">
+<span>۱۵ گیگ</span>
+<span class="price">۱,۵۰۰,۰۰۰ تومان</span>
+</div>
+
+<div class="price-item">
+<span>۲۰ گیگ</span>
+<span class="price">۲,۰۰۰,۰۰۰ تومان</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+DIAMOND LOCATIONS
+===================================================== -->
+
+<section>
+
+<div class="section-title">
+
+<span>
+💎 DIAMOND LOCATIONS
+</span>
+
+<h2>
+لوکیشن‌های پلن الماس
+</h2>
+
+<p>
+هزینه اضافه بر اساس حجم سفارش محاسبه می‌شود.
+</p>
+
+</div>
+
+
+<div class="location-grid">
+
+<div class="location-card">
+
+<div class="flag">
+🇹🇷
+</div>
+
+<h3>
+ترکیه
+</h3>
+
+<p>
+بدون هزینه اضافه
+</p>
+
+</div>
+
+
+<div class="location-card">
+
+<div class="flag">
+🇩🇪
+</div>
+
+<h3>
+آلمان
+</h3>
+
+<p>
+بدون هزینه اضافه
+</p>
+
+</div>
+
+
+<div class="location-card">
+
+<div class="flag">
+🇳🇱
+</div>
+
+<h3>
+هلند
+</h3>
+
+<p>
++۱,۰۰۰ تومان / گیگ
+</p>
+
+</div>
+
+
+<div class="location-card">
+
+<div class="flag">
+🇫🇮
+</div>
+
+<h3>
+فنلاند
+</h3>
+
+<p>
++۲,۰۰۰ تومان / گیگ
+</p>
+
+</div>
+
+
+<div class="location-card">
+
+<div class="flag">
+🇺🇸
+</div>
+
+<h3>
+آمریکا
+</h3>
+
+<p>
++۵,۰۰۰ تومان / گیگ
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+GOLD LOCATION
+===================================================== -->
+
+<section>
+
+<div class="section-title">
+
+<span>
+👑 GOLD LOCATION
+</span>
+
+<h2>
+لوکیشن پلن طلایی
+</h2>
+
+<p>
+پلن طلایی فقط با لوکیشن آمریکا ارائه می‌شود.
+</p>
+
+</div>
+
+
+<div
+class="location-grid"
+style="grid-template-columns:1fr;max-width:250px;margin:auto;"
+>
+
+<div class="location-card">
+
+<div class="flag">
+🇺🇸
+</div>
+
+<h3>
+آمریکا
+</h3>
+
+<p>
+بدون هزینه اضافه
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+TUTORIAL
+===================================================== -->
+
+<section id="tutorial">
+
+<div class="section-title">
+
+<span>
+CONNECTION GUIDE
+</span>
+
+<h2>
+📱 آموزش اتصال
+</h2>
+
+</div>
+
+
+<div class="tutorial">
+
+
+<div class="tutorial-card">
+
+<h3>
+📱 آموزش V2RayNG
+</h3>
+
+<div class="step">
+
+<div class="step-number">
+۱
+</div>
+
+<p>
+برنامه V2RayNG را نصب و اجرا کنید.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+۲
+</div>
+
+<p>
+کانفیگ دریافت‌شده را کپی کنید.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+۳
+</div>
+
+<p>
+کانفیگ را داخل برنامه Import کنید.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+۴
+</div>
+
+<p>
+پروفایل را انتخاب کرده و اتصال را فعال کنید.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="tutorial-card">
+
+<h3>
+📱 آموزش NapsternetV
+</h3>
+
+<div class="step">
+
+<div class="step-number">
+۱
+</div>
+
+<p>
+برنامه NapsternetV را نصب و اجرا کنید.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+۲
+</div>
+
+<p>
+کانفیگ دریافت‌شده را کپی کنید.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+۳
+</div>
+
+<p>
+کانفیگ را داخل برنامه Import کنید.
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="step-number">
+۴
+</div>
+
+<p>
+پروفایل را انتخاب کرده و اتصال را فعال کنید.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+FAQ
+===================================================== -->
+
+<section id="faq">
+
+<div class="section-title">
+
+<span>
+FAQ
+</span>
+
+<h2>
+❓ سوالات متداول
+</h2>
+
+</div>
+
+
+<div class="faq">
+
+
+<details>
+
+<summary>
+📱 سرویس روی چه برنامه‌هایی کار می‌کند؟
+</summary>
+
+<p>
+سرویس‌ها برای برنامه‌های سازگار مانند V2RayNG و NapsternetV ارائه می‌شوند.
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+🌍 لوکیشن‌ها چه تفاوتی دارند؟
+</summary>
+
+<p>
+در پلن الماس می‌توانید ترکیه، آلمان، هلند، فنلاند و آمریکا را انتخاب کنید.
+پلن طلایی فقط با لوکیشن آمریکا ارائه می‌شود.
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+📦 حجم سرویس چقدر است؟
+</summary>
+
+<p>
+می‌توانید حجم دلخواه خود را از ۱ تا ۵۰ گیگابایت انتخاب کنید.
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+💰 قیمت نهایی چگونه محاسبه می‌شود؟
+</summary>
+
+<p>
+در پلن الماس، قیمت پایه هر گیگ ۴,۰۰۰ تومان است و هزینه لوکیشن به آن اضافه می‌شود.
+در پلن طلایی، قیمت هر گیگ ۱۰۰,۰۰۰ تومان است و آمریکا هزینه اضافه ندارد.
+</p>
+
+</details>
+
+
+<details>
+
+<summary>
+🛒 بعد از ثبت سفارش چه کنم؟
+</summary>
+
+<p>
+متن سفارش را کپی کرده و برای ادمین ارسال کنید، سپس مبلغ را پرداخت کرده و اشتراک خود را دریافت نمایید.
+</p>
+
+</details>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+CONTACT
+===================================================== -->
+
+<section
+id="contact"
+class="contact"
+>
+
+<div class="contact-card">
+
+<h2>
+🚀 آماده‌ای شروع کنی؟
+</h2>
+
+<p>
+برای ثبت سفارش یا پشتیبانی
+در روبیکا با ما در ارتباط باشید.
+</p>
+
+
+<div class="rubika">
+
+<span>
+@Game94mod003
+</span>
+
+<button
+class="copy"
+onclick="copyRubika()"
+>
+کپی
+</button>
+
+</div>
+
+<br>
+
+<a
+href="https://rubika.ir/Game94mod003"
+target="_blank"
+rel="noopener"
+class="btn btn-primary"
+>
+✉️ ورود به روبیکا
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+FOOTER
+===================================================== -->
+
+<footer>
+
+<p>
+© 2026 تمامی حقوق برای
+<strong>
+AghaKocholo.VPNS
+</strong>
+محفوظ است.
+</p>
+
+</footer>
+
+
+<!-- =====================================================
+ORDER MODAL
+===================================================== -->
+
+<div
+class="modal"
+id="orderModal"
+onclick="closeModalOutside(event)"
+>
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<h3>
+🛒 اطلاعات سفارش
+</h3>
+
+<button
+class="close-modal"
+onclick="closeOrderModal()"
+>
+×
+</button>
+
+</div>
+
+
+<div class="order-alert">
+
+✅ سفارش شما آماده است.
+
+<br>
+
+لطفاً متن زیر را
+<strong>
+کپی کنید و برای ادمین ارسال نمایید.
+</strong>
+
+<br>
+
+سپس مبلغ را پرداخت کرده
+و اشتراک خود را دریافت نمایید.
+
+</div>
+
+
+<textarea
+id="orderText"
+class="copy-text"
+readonly
+></textarea>
+
+
+<div class="modal-actions">
+
+<button
+class="btn btn-secondary"
+onclick="copyOrderText()"
+>
+📋 کپی متن سفارش
+</button>
+
+
+<a
+href="https://rubika.ir/Game94mod003"
+target="_blank"
+rel="noopener"
+class="btn btn-primary"
+>
+💳 ارسال به ادمین
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+NOTICE
+===================================================== */
+
+const notice =
+document.getElementById(
+    "welcomeNotice"
+);
+
+const noticeClose =
+document.getElementById(
+    "noticeClose"
+);
+
+const noticeCountdown =
+document.getElementById(
+    "noticeCountdown"
+);
+
+let remainingSeconds = 5;
+
+const noticeTimer =
+setInterval(
+function(){
+
+    remainingSeconds--;
+
+    if(
+        remainingSeconds > 0
+    ){
+
+        noticeClose.innerText =
+        "⏳ لطفاً "
+        +
+        remainingSeconds
+        +
+        " ثانیه صبر کنید...";
+
+        noticeCountdown.innerText =
+        "دکمه بستن تا "
+        +
+        remainingSeconds
+        +
+        " ثانیه دیگر فعال می‌شود";
+
+    }
+
+    else{
+
+        clearInterval(
+            noticeTimer
+        );
+
+        noticeClose.disabled =
+        false;
+
+        noticeClose.classList.add(
+            "active"
+        );
+
+        noticeClose.innerText =
+        "✅ متوجه شدم؛ ورود به سایت";
+
+        noticeCountdown.classList.add(
+            "ready"
+        );
+
+        noticeCountdown.innerText =
+        "✨ حالا می‌تونی با خیال راحت ادامه بدی";
+
+    }
+
+},
+1000
+);
+
+
+noticeClose.addEventListener(
+    "click",
+    function(){
+
+        if(
+            !noticeClose.disabled
+        ){
+
+            notice.style.opacity =
+            "0";
+
+            notice.style.transition =
+            "opacity .25s ease";
+
+            setTimeout(
+            function(){
+
+                notice.style.display =
+                "none";
+
+            },
+            250
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+PRICE SYSTEM
+===================================================== */
+
+const diamondPricePerGB = 4000;
+
+const goldPricePerGB = 100000;
+
+const diamondLocationFee = {
+
+    turkey:0,
+
+    germany:0,
+
+    netherlands:1000,
+
+    finland:2000,
+
+    usa:5000
+
+};
+
+
+const diamondLocations = {
+
+    turkey:"🇹🇷 ترکیه",
+
+    germany:"🇩🇪 آلمان",
+
+    netherlands:"🇳🇱 هلند",
+
+    finland:"🇫🇮 فنلاند",
+
+    usa:"🇺🇸 آمریکا"
+
+};
+
+
+/* =====================================================
+ELEMENTS
+===================================================== */
+
+const service =
+document.getElementById(
+    "service"
+);
+
+const locationSelect =
+document.getElementById(
+    "location"
+);
+
+const slider =
+document.getElementById(
+    "volumeSlider"
+);
+
+const volumeNumber =
+document.getElementById(
+    "volumeNumber"
+);
+
+const selectedService =
+document.getElementById(
+    "selectedService"
+);
+
+const selectedLocation =
+document.getElementById(
+    "selectedLocation"
+);
+
+const selectedVolume =
+document.getElementById(
+    "selectedVolume"
+);
+
+const finalPrice =
+document.getElementById(
+    "finalPrice"
+);
+
+const locationWarning =
+document.getElementById(
+    "locationWarning"
+);
+
+
+/* =====================================================
+PRICE FORMAT
+===================================================== */
+
+function formatPrice(number){
+
+    return Number(number)
+    .toLocaleString(
+        "fa-IR"
+    )
+    +
+    " تومان";
+
+}
+
+
+/* =====================================================
+UPDATE LOCATIONS
+===================================================== */
+
+function updateLocationOptions(){
+
+    locationSelect.innerHTML =
+    "";
+
+    if(
+        service.value ===
+        "gold"
+    ){
+
+        const option =
+        document.createElement(
+            "option"
+        );
+
+        option.value =
+        "usa";
+
+        option.textContent =
+        "🇺🇸 آمریکا";
+
+        locationSelect.appendChild(
+            option
+        );
+
+    }
+
+    else{
+
+        Object.entries(
+            diamondLocations
+        )
+        .forEach(
+        function(
+            [key,name]
+        ){
+
+            const option =
+            document.createElement(
+                "option"
+            );
+
+            option.value =
+            key;
+
+            option.textContent =
+            name;
+
+            locationSelect.appendChild(
+                option
+            );
+
+        });
+
+    }
+
+    updatePrice();
+
+}
+
+
+/* =====================================================
+UPDATE WARNING
+===================================================== */
+
+function updateLocationWarning(){
+
+    const volume =
+    Number(
+        slider.value
+    );
+
+    const location =
+    locationSelect.value;
+
+    let feePerGB =
+    0;
+
+    if(
+        service.value ===
+        "diamond"
+    ){
+
+        feePerGB =
+        diamondLocationFee[
+            location
+        ];
+
+    }
+
+    const totalFee =
+    volume *
+    feePerGB;
+
+    const locationName =
+    locationSelect
+    .selectedOptions[0]
+    .textContent;
+
+
+    if(
+        feePerGB === 0
+    ){
+
+        locationWarning.innerHTML =
+        "⚠️ هزینه "
+        +
+        locationName
+        +
+        ": <strong>رایگان</strong>";
+
+    }
+
+    else{
+
+        locationWarning.innerHTML =
+        "⚠️ هزینه "
+        +
+        locationName
+        +
+        " برای "
+        +
+        volume
+        +
+        " گیگ: <strong>"
+        +
+        formatPrice(
+            totalFee
+        )
+        +
+        "</strong>";
+
+    }
+
+}
+
+
+/* =====================================================
+UPDATE PRICE
+===================================================== */
+
+function updatePrice(){
+
+    const volume =
+    Number(
+        slider.value
+    );
+
+    const location =
+    locationSelect.value;
+
+    let locationFee =
+    0;
+
+    if(
+        service.value ===
+        "diamond"
+    ){
+
+        locationFee =
+        volume *
+        diamondLocationFee[
+            location
+        ];
+
+    }
+
+    const basePrice =
+
+    service.value ===
+    "gold"
+
+    ?
+
+    volume *
+    goldPricePerGB
+
+    :
+
+    volume *
+    diamondPricePerGB;
+
+
+    const totalPrice =
+    basePrice +
+    locationFee;
+
+
+    volumeNumber.innerText =
+    volume;
+
+
+    selectedVolume.innerText =
+    volume +
+    " گیگابایت";
+
+
+    selectedService.innerText =
+
+    service.value ===
+    "gold"
+
+    ?
+
+    "👑 پلن طلایی"
+
+    :
+
+    "💎 پلن الماس";
+
+
+    selectedLocation.innerText =
+    locationSelect
+    .selectedOptions[0]
+    .textContent;
+
+
+    finalPrice.innerText =
+    formatPrice(
+        totalPrice
+    );
+
+
+    const percent =
+
+    (
+        (volume - 1)
+        /
+        49
+    )
+    *
+    100;
+
+
+    slider.style.background =
+
+    `linear-gradient(
+        to left,
+        #00eaff 0%,
+        #00eaff ${percent}%,
+        #22232d ${percent}%,
+        #22232d 100%
+    )`;
+
+
+    updateLocationWarning();
+
+}
+
+
+/* =====================================================
+ORDER TEXT
+===================================================== */
+
+function createOrderText(){
+
+    const volume =
+    Number(
+        slider.value
+    );
+
+    const location =
+    locationSelect.value;
+
+    let locationFee =
+    0;
+
+    if(
+        service.value ===
+        "diamond"
+    ){
+
+        locationFee =
+        volume *
+        diamondLocationFee[
+            location
+        ];
+
+    }
+
+
+    const basePrice =
+
+    service.value ===
+    "gold"
+
+    ?
+
+    volume *
+    goldPricePerGB
+
+    :
+
+    volume *
+    diamondPricePerGB;
+
+
+    const totalPrice =
+    basePrice +
+    locationFee;
+
+
+    const serviceName =
+
+    service.value ===
+    "gold"
+
+    ?
+
+    "👑 پلن طلایی | اینترنت ملی"
+
+    :
+
+    "💎 پلن الماس | اینترنت عادی";
+
+
+    const locationName =
+    locationSelect
+    .selectedOptions[0]
+    .textContent;
+
+
+    return `سلام 👋
+
+می‌خواهم سفارش AghaKocholo.VPNS را ثبت کنم.
+
+━━━━━━━━━━━━━━
+
+💎 نوع سرویس:
+${serviceName}
+
+🌍 لوکیشن:
+${locationName}
+
+📦 حجم:
+${volume} گیگابایت
+
+💰 قیمت پایه:
+${formatPrice(basePrice)}
+
+🌍 هزینه لوکیشن:
+${formatPrice(locationFee)}
+
+💵 قیمت نهایی:
+${formatPrice(totalPrice)}
+
+━━━━━━━━━━━━━━
+
+لطفاً اطلاعات پرداخت را ارسال کنید.
+
+پس از پرداخت، رسید پرداخت را ارسال می‌کنم تا اشتراک خود را دریافت کنم.
+
+ممنون 🙏`;
+
+}
+
+
+/* =====================================================
+MODAL
+===================================================== */
+
+function openOrderModal(){
+
+    document.getElementById(
+        "orderText"
+    ).value =
+    createOrderText();
+
+
+    document.getElementById(
+        "orderModal"
+    )
+    .classList
+    .add(
+        "active"
+    );
+
+}
+
+
+function closeOrderModal(){
+
+    document.getElementById(
+        "orderModal"
+    )
+    .classList
+    .remove(
+        "active"
+    );
+
+}
+
+
+function closeModalOutside(
+    event
+){
+
+    if(
+        event.target.id ===
+        "orderModal"
+    ){
+
+        closeOrderModal();
+
+    }
+
+}
+
+
+/* =====================================================
+COPY ORDER
+===================================================== */
+
+async function copyOrderText(){
+
+    const text =
+    document.getElementById(
+        "orderText"
+    ).value;
+
+
+    try{
+
+        await navigator
+        .clipboard
+        .writeText(
+            text
+        );
+
+        alert(
+            "✅ متن سفارش کپی شد!"
+        );
+
+    }
+
+    catch{
+
+        const textarea =
+        document.getElementById(
+            "orderText"
+        );
+
+        textarea.select();
+
+        document.execCommand(
+            "copy"
+        );
+
+        alert(
+            "✅ متن سفارش کپی شد!"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+COPY RUBIKA
+===================================================== */
+
+async function copyRubika(){
+
+    try{
+
+        await navigator
+        .clipboard
+        .writeText(
+            "@Game94mod003"
+        );
+
+        alert(
+            "✅ آیدی روبیکا کپی شد!"
+        );
+
+    }
+
+    catch{
+
+        alert(
+            "@Game94mod003"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+MOBILE MENU
+===================================================== */
+
+function toggleMenu(){
+
+    document
+    .getElementById(
+        "mobileMenu"
+    )
+    .classList
+    .toggle(
+        "active"
+    );
+
+}
+
+
+function closeMenu(){
+
+    document
+    .getElementById(
+        "mobileMenu"
+    )
+    .classList
+    .remove(
+        "active"
+    );
+
+}
+
+
+/* =====================================================
+EVENTS
+===================================================== */
+
+service.addEventListener(
+    "change",
+    updateLocationOptions
+);
+
+locationSelect.addEventListener(
+    "change",
+    updatePrice
+);
+
+slider.addEventListener(
+    "input",
+    updatePrice
+);
+
+
+/* =====================================================
+START
+===================================================== */
+
+updateLocationOptions();
+
+</script>
+
+</body>
+</html>
